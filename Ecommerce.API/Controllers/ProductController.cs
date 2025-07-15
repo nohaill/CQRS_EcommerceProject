@@ -47,5 +47,17 @@ namespace Ecommerce.API.Controllers
         }
 
 
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateProduct product)
+        {
+            var success = await _mediator.Send(new UpdateProductCommand{ Product = product });
+
+            if (!success)
+                return NotFound();
+
+            return Ok("Updated");
+        }
+
+
     }
 }

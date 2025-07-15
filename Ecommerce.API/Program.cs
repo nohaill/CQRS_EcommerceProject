@@ -1,3 +1,4 @@
+using Ecommerce.Application;
 using Ecommerce.Application.Queries.Products;
 using Ecommerce.Domain.Interfaces;
 using Ecommerce.Infrastructure.Repositories;
@@ -24,7 +25,8 @@ builder.Services.AddCors(options =>
                       });
 });
 
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetAllProductsQuery).Assembly));
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(MediatRAssemblyMarker).Assembly));
+
 
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();

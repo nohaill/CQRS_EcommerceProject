@@ -51,5 +51,21 @@ namespace Ecommerce.Infrastructure.Repositories
             return newId;
         }
 
+
+        public async Task<bool> UpdateProductAsync(UpdateProduct product)
+        {
+            var sql = @"
+        UPDATE Products
+        SET Name = @Name, Price = @Price, Stock = @Stock
+        WHERE Id = @Id";
+
+            using var connection = new SqlConnection(_connectionString);
+
+            var rowsAffected = await connection.ExecuteAsync(sql, product);
+
+            return rowsAffected > 0;
+        }
+
+
     }
 }
