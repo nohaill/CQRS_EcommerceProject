@@ -17,6 +17,8 @@ namespace Ecommerce.Domain.Interfaces
 
         Task<bool> UpdateProductAsync(UpdateProduct product);
 
+        Task<bool> DeleteProductAsync(int id);
+
 
     }
 }

@@ -67,5 +67,15 @@ namespace Ecommerce.Infrastructure.Repositories
         }
 
 
+        public async Task<bool> DeleteProductAsync(int id)
+        {
+            var query = "DELETE FROM Products WHERE Id = @Id";
+
+            using var connection = new SqlConnection(_connectionString);
+            var rowsAffected = await connection.ExecuteAsync(query, new { Id = id });
+
+            return rowsAffected > 0;
+        }
+
     }
 }
